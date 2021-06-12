@@ -1,5 +1,4 @@
 <template>
-  <search-nav-bar></search-nav-bar>
   <search-nav-bar ref="searchNav" @myHistory="myHistory"></search-nav-bar>
 
   <section class="history-container" v-if="historyList.length !== 0">
