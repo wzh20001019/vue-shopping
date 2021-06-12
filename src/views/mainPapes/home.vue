@@ -221,14 +221,6 @@ export default {
       goDetail
     }
   }
-
-  // beforeCreate() {
-  //   NProgress.start()
-  // },
-
-  // mounted() {
-  //   NProgress.done()
-  // }
 }
 </script>
 

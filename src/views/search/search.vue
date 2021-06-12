@@ -1,12 +1,14 @@
 <template>
-  <section>
-    search
-  </section>
+  <search-nav-bar></search-nav-bar>
 </template>
 
 <script>
+import SearchNavBar from '@/components/SearchNavBar.vue'
 export default {
-  name: 'Search'
+  name: 'Search',
+  components: {
+    SearchNavBar
+  }
 }
 </script>
 

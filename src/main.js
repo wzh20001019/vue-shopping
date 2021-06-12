@@ -13,7 +13,8 @@ import {
   Icon,
   Swipe,
   SwipeItem,
-  Skeleton
+  Skeleton,
+  Button
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -41,5 +42,6 @@ app.use(Icon)
 app.use(Swipe)
 app.use(SwipeItem)
 app.use(Skeleton)
+app.use(Button)
 
 app.mount('#app')
