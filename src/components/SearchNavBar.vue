@@ -21,7 +21,7 @@ import { ref, onMounted } from 'vue'
 export default {
   name: 'SearchNvBar',
 
-  setup() {
+  setup(props, content) {
     const value = ref('')
     const search = ref(null)
 
@@ -31,6 +31,8 @@ export default {
 
     const searchResults = () => {
       if (!value.value) return search.value.focus()
+
+      content.emit('myHistory', value.value)
     }
 
     return {
@@ -46,7 +48,8 @@ export default {
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  position: fixed;
+
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
