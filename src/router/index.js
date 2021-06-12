@@ -41,6 +41,11 @@ const routes = [
     component: () => import('@/views/search/search.vue')
   },
   {
+    path: '/detail/:id',
+    name: 'Detail',
+    component: () => import('@/views/goodDetail/detail.vue')
+  },
+  {
     // 访问不存在的页面
     path: '/:catchAll(.*)',
     name: '404',

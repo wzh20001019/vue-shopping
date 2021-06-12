@@ -1,6 +1,9 @@
 <template>
-  <section class="navbar-container">
-    <div class="to-category" @click="$router.push('/category')">
+  <section :class="{ 'navbar-container': true, active: isActive }">
+    <div
+      :class="{ 'to-category': true, current: isActive }"
+      @click="$router.push('/category')"
+    >
       <van-icon name="diamond-o" />
     </div>
     <div class="to-search">
@@ -8,7 +11,10 @@
         <span>搜索</span>
       </div>
     </div>
-    <div class="to-my" @click="$router.push('/my')">
+    <div
+      :class="{ 'to-my': true, current: isActive }"
+      @click="$router.push('/my')"
+    >
       <van-icon name="user-o" />
     </div>
   </section>
@@ -16,7 +22,13 @@
 
 <script>
 export default {
-  name: 'HomeNavBar'
+  name: 'HomeNavBar',
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 
@@ -30,6 +42,7 @@ export default {
   width: 100%;
   height: 90px;
   background: transparent;
+  z-index: 99;
 
   .to-category,
   .to-my {
@@ -63,6 +76,16 @@ export default {
         color: #888;
       }
     }
+  }
+}
+
+.active {
+  background: #1baeae;
+}
+
+.current {
+  .van-icon {
+    color: #fff !important;
   }
 }
 </style>

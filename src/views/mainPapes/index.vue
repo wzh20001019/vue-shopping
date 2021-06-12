@@ -1,11 +1,9 @@
 <template>
   <!-- <router-view /> -->
   <router-view v-slot="{ Component }">
-    <transition>
-      <keep-alive include="Home">
-        <component :is="Component" />
-      </keep-alive>
-    </transition>
+    <keep-alive include="Home">
+      <component :is="Component" />
+    </keep-alive>
   </router-view>
 
   <van-tabbar v-model="active" active-color="#755bea" route>
