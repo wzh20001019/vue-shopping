@@ -12,7 +12,7 @@ export default {
     const route = useRoute()
 
     onMounted(() => {
-      console.log(route.params.id)
+      console.log(+route.params.id)
     })
   }
 }
