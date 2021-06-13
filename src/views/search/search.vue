@@ -73,8 +73,6 @@ export default {
     }
 
     const clearHistory = () => {
-      console.log('clearHistory')
-
       historyList.value = []
       removeItem('history')
     }
@@ -159,6 +157,8 @@ export default {
 
     .van-icon {
       float: right;
+      margin-right: 10px;
+      font-size: 50px;
       color: #ccc;
     }
   }

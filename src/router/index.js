@@ -49,7 +49,7 @@ const routes = [
     // 访问不存在的页面
     path: '/:catchAll(.*)',
     name: '404',
-    component: () => import('../views/404/404.vue')
+    component: () => import('@/views/404/404.vue')
   }
 ]
 

@@ -82,6 +82,10 @@
 
     <van-skeleton title :row="3" v-else />
   </section>
+
+  <section class="backtop" v-if="isShow" @click="backTop">
+    <van-icon name="back-top" />
+  </section>
 </template>
 
 <script>
@@ -101,6 +105,8 @@ export default {
 
   setup() {
     const isActive = ref(false)
+
+    const isShow = ref(false)
 
     const router = useRouter()
 
@@ -186,7 +192,7 @@ export default {
         homeData.newGoodses = res.data.newGoodses
         homeData.recommendGoodses = res.data.recommendGoodses
 
-        console.log(homeData)
+        // console.log(homeData)
       } catch (err) {
         return console.log(err.message)
       }
@@ -207,8 +213,18 @@ export default {
         } else {
           isActive.value = false
         }
+
+        if (scrollTop >= 800) {
+          isShow.value = true
+        } else {
+          isShow.value = false
+        }
       })
     })
+
+    const backTop = () => {
+      window.scroll(0, 0)
+    }
 
     const goDetail = id => {
       router.push('/detail/' + id)
@@ -216,9 +232,11 @@ export default {
 
     return {
       isActive,
+      isShow,
       ...toRefs(homeData),
       goNavList,
-      goDetail
+      goDetail,
+      backTop
     }
   }
 }
@@ -326,5 +344,21 @@ export default {
 
 .recommendGoodses-box {
   margin-bottom: 180px;
+}
+
+.backtop {
+  position: fixed;
+  right: 50px;
+  bottom: 180px;
+  width: 80px;
+  height: 80px;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #1baeb5;
+  opacity: 0.7;
+
+  .van-icon {
+    font-size: 80px;
+  }
 }
 </style>

@@ -18,7 +18,9 @@ import {
   Tab,
   Tabs,
   PullRefresh,
-  Tag
+  Tag,
+  Sidebar,
+  SidebarItem
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -51,5 +53,7 @@ app.use(Tab)
 app.use(Tabs)
 app.use(PullRefresh)
 app.use(Tag)
+app.use(Sidebar)
+app.use(SidebarItem)
 
 app.mount('#app')
