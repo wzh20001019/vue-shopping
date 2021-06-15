@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="not-login-container">
     my
   </section>
 </template>
