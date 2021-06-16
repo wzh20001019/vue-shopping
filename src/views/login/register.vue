@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { register } from '../../api/user'
+import { register } from '@/api/user'
 
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { login } from '../../api/user'
+import { login } from '@/api/user'
 
 import md5 from 'js-md5'
 import { reactive, toRefs } from 'vue'
