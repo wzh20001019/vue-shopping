@@ -20,7 +20,9 @@ import {
   PullRefresh,
   Tag,
   Sidebar,
-  SidebarItem
+  SidebarItem,
+  Form,
+  Field
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -55,5 +57,7 @@ app.use(PullRefresh)
 app.use(Tag)
 app.use(Sidebar)
 app.use(SidebarItem)
+app.use(Form)
+app.use(Field)
 
 app.mount('#app')

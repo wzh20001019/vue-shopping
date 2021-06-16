@@ -1,7 +1,7 @@
 <template>
-  <section class="login container">
+  <section class="register container">
     <van-nav-bar
-      title="登录"
+      title="注册"
       left-arrow
       @click-left="$router.back()"
       @click-right="navRight"
@@ -38,25 +38,23 @@
 
       <div style="margin: 16px;">
         <van-button round block type="primary" native-type="submit">
-          登录
+          注册
         </van-button>
       </div>
     </van-form>
 
-    <a href="javascript:;" @click="$router.push('/register')">立即注册</a>
+    <a href="javascript:;" @click="$router.push('/login')">立即登录</a>
   </section>
 </template>
 
 <script>
-import { login } from '../../api/user'
+import { register } from '../../api/user'
 
-import md5 from 'js-md5'
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
 import { Toast } from 'vant'
 export default {
-  name: 'Login',
+  name: 'Register',
 
   setup() {
     const rules = reactive({
@@ -74,14 +72,13 @@ export default {
       // ]
     })
 
-    const router = useRouter()
-    const store = useStore()
-
     const state = reactive({
       username: '',
       password: '',
       verify: ''
     })
+
+    const router = useRouter()
 
     const navRight = () => {
       Toast('点击了')
@@ -89,20 +86,16 @@ export default {
 
     const onSubmit = async () => {
       try {
-        const { data: res } = await login({
+        const { data: res } = await register({
           loginName: state.username,
-          passwordMd5: md5(state.password)
+          password: state.password
         })
 
         if (res.resultCode !== 200) {
-          return Toast.fail('用户名或者密码错误')
+          return Toast.fail(res.message)
         } else {
-          Toast.success('登录成功')
-
-          store.commit('updateToken', res.data)
-
           setTimeout(() => {
-            router.push('/my')
+            router.push('/login')
           }, 1000)
         }
 
@@ -123,7 +116,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.container {
+.login-container {
   position: absolute;
   top: 0;
   left: 0;

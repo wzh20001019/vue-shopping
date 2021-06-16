@@ -19,7 +19,7 @@ export default {
       if (!getItem('token')) {
         Toast('请先登录')
         setTimeout(() => {
-          router.push('/my')
+          router.push('/login')
         }, 100)
       }
     })

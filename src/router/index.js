@@ -46,6 +46,16 @@ const routes = [
     component: () => import('@/views/goodDetail/detail.vue')
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('@/views/login/register.vue')
+  },
+  {
     // 访问不存在的页面
     path: '/:catchAll(.*)',
     name: '404',
