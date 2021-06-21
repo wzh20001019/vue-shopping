@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../store/index'
 
 // import NProgress from 'nprogress'
 // import { ToastLoadingStart, ToastLoadingEnd } from './toastLoading'
@@ -13,7 +14,7 @@ const request = axios.create({
   withCredentials: true,
   headers: {
     'X-Requested-With': 'XMLHttpRequest',
-    token: localStorage.getItem('token') || '',
+    token: store.state.token,
 
     post: {
       'Content-Type': 'application/json'

@@ -6,3 +6,11 @@ export const getGoodData = id => {
     url: '/goods/detail/' + id
   })
 }
+
+export const addCart = params => {
+  return request({
+    method: 'POST',
+    url: '/shop-cart',
+    data: params
+  })
+}

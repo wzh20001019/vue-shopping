@@ -22,7 +22,12 @@ import {
   Sidebar,
   SidebarItem,
   Form,
-  Field
+  Field,
+  ActionBar,
+  ActionBarIcon,
+  ActionBarButton,
+  Cell,
+  CellGroup
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -43,6 +48,7 @@ app.config.globalProperties.$filters = {
 
 app.use(store)
 app.use(router)
+
 app.use(Tabbar)
 app.use(TabbarItem)
 app.use(NavBar)
@@ -59,5 +65,10 @@ app.use(Sidebar)
 app.use(SidebarItem)
 app.use(Form)
 app.use(Field)
+app.use(ActionBar)
+app.use(ActionBarIcon)
+app.use(ActionBarButton)
+app.use(Cell)
+app.use(CellGroup)
 
 app.mount('#app')

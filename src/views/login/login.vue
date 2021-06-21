@@ -1,7 +1,54 @@
 <template>
-  <section class="login container">
+  <section class="login container" v-if="isShow">
     <van-nav-bar
       title="登录"
+      left-arrow
+      @click-left="$router.back()"
+      @click-right="navRight"
+    >
+      <template #right>
+        <van-icon name="ellipsis" size="20" />
+      </template>
+    </van-nav-bar>
+    <van-form @submit="onSubmitLogin">
+      <van-field
+        v-model="username"
+        name="username"
+        label="用户名"
+        placeholder="用户名"
+        :rules="rules.username"
+      />
+
+      <van-field
+        v-model="password"
+        type="password"
+        name="password"
+        label="密码"
+        placeholder="密码"
+        :rules="rules.password"
+      />
+
+      <!-- <van-field
+        v-model="verify"
+        name="verify"
+        label="验证码"
+        placeholder="验证码"
+        :rules="rules.verify"
+      /> -->
+
+      <div style="margin: 16px;">
+        <van-button round block type="primary" native-type="submit">
+          登录
+        </van-button>
+      </div>
+    </van-form>
+
+    <a href="javascript:;" @click="isShow = false">立即注册</a>
+  </section>
+
+  <section class="register container" v-else>
+    <van-nav-bar
+      title="注册"
       left-arrow
       @click-left="$router.back()"
       @click-right="navRight"
@@ -38,20 +85,20 @@
 
       <div style="margin: 16px;">
         <van-button round block type="primary" native-type="submit">
-          登录
+          注册
         </van-button>
       </div>
     </van-form>
 
-    <a href="javascript:;" @click="$router.push('/register')">立即注册</a>
+    <a href="javascript:;" @click="isShow = true">立即登录</a>
   </section>
 </template>
 
 <script>
-import { login } from '@/api/user'
+import { login, register } from '@/api/user'
 
 import md5 from 'js-md5'
-import { reactive, toRefs } from 'vue'
+import { reactive, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Toast } from 'vant'
@@ -77,6 +124,8 @@ export default {
     const router = useRouter()
     const store = useStore()
 
+    const isShow = ref(true)
+
     const state = reactive({
       username: '',
       password: '',
@@ -87,7 +136,7 @@ export default {
       Toast('点击了')
     }
 
-    const onSubmit = async () => {
+    const onSubmitLogin = async () => {
       try {
         const { data: res } = await login({
           loginName: state.username,
@@ -102,11 +151,28 @@ export default {
           store.commit('updateToken', res.data)
 
           setTimeout(() => {
-            router.push('/my')
+            router.back()
           }, 1000)
         }
+      } catch (err) {
+        console.log(err.message)
+      }
+    }
 
-        console.log(res)
+    const onSubmit = async () => {
+      try {
+        const { data: res } = await register({
+          loginName: state.username,
+          password: state.password
+        })
+
+        if (res.resultCode !== 200) {
+          return Toast.fail(res.message)
+        } else {
+          setTimeout(() => {
+            isShow.value = true
+          }, 1000)
+        }
       } catch (err) {
         console.log(err.message)
       }
@@ -114,9 +180,11 @@ export default {
 
     return {
       ...toRefs(state),
+      onSubmitLogin,
       onSubmit,
       navRight,
-      rules
+      rules,
+      isShow
     }
   }
 }

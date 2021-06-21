@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import { getItem } from '../../utils/storage'
+import { getItem } from '@/utils/storage'
+import { getCart } from '../../api/cart'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Toast } from 'vant'
@@ -22,6 +23,14 @@ export default {
           router.push('/login')
         }, 100)
       }
+
+      getCart()
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err.message)
+        })
     })
   }
 }
