@@ -99,7 +99,7 @@ import { login, register } from '@/api/user'
 
 import md5 from 'js-md5'
 import { reactive, ref, toRefs } from 'vue'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Toast } from 'vant'
 export default {
@@ -121,7 +121,7 @@ export default {
       // ]
     })
 
-    const router = useRouter()
+    // const router = useRouter()
     const store = useStore()
 
     const isShow = ref(true)
@@ -150,9 +150,12 @@ export default {
 
           store.commit('updateToken', res.data)
 
-          setTimeout(() => {
-            router.back()
-          }, 1000)
+          // 需要刷新页面，否则 axios.js 文件里的 token 不会被重置
+          window.location.href = '/'
+
+          // setTimeout(() => {
+          //   router.back()
+          // }, 1000)
         }
       } catch (err) {
         console.log(err.message)

@@ -56,7 +56,7 @@
 import { getCateGory } from '@/api/category'
 import { ToastLoadingStart, ToastLoadingEnd } from '../../utils/toastLoading'
 
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { ref, reactive, onMounted, watchEffect, nextTick } from 'vue'
 import { Toast } from 'vant'
 import BScroll from 'better-scroll'
 export default {
@@ -98,8 +98,10 @@ export default {
     })
 
     // 页面发生改变就重新计算高度
-    nextTick(() => {
-      bs && bs.refresh()
+    watchEffect(() => {
+      nextTick(() => {
+        bs && bs.refresh()
+      })
     })
 
     const onChange = index => {

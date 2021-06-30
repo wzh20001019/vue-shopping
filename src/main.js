@@ -27,7 +27,13 @@ import {
   ActionBarIcon,
   ActionBarButton,
   Cell,
-  CellGroup
+  CellGroup,
+  Card,
+  SwipeCell,
+  Stepper,
+  SubmitBar,
+  Checkbox,
+  CheckboxGroup
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -70,5 +76,11 @@ app.use(ActionBarIcon)
 app.use(ActionBarButton)
 app.use(Cell)
 app.use(CellGroup)
+app.use(Card)
+app.use(SwipeCell)
+app.use(Stepper)
+app.use(SubmitBar)
+app.use(Checkbox)
+app.use(CheckboxGroup)
 
 app.mount('#app')

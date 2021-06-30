@@ -67,7 +67,7 @@
     <van-action-bar-icon
       icon="shop-o"
       text="购物车"
-      badge="0"
+      :badge="$store.state.total"
       @click="onClickIcon"
     />
 
@@ -125,12 +125,6 @@ export default {
           ]
 
           detailData.data = res.data
-        }
-
-        if (res.message === '无效认证！请重新登录！') {
-          Toast('请先登录')
-
-          return router.push('/login')
         }
 
         if (!localStorage.getItem('token')) {
