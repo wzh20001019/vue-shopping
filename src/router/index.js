@@ -56,6 +56,26 @@ const routes = [
     component: () => import('@/views/login/register.vue')
   },
   {
+    path: '/order',
+    name: 'Order',
+    component: () => import('../views/pages/order.vue')
+  },
+  {
+    path: '/account',
+    name: 'Account',
+    component: () => import('../views/pages/account.vue')
+  },
+  {
+    path: '/address',
+    name: 'Address',
+    component: () => import('../views/pages/address.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/pages/about.vue')
+  },
+  {
     // 访问不存在的页面
     path: '/:catchAll(.*)',
     name: '404',

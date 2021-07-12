@@ -1,14 +1,5 @@
 <template>
-  <van-nav-bar
-    title="商品详情"
-    left-arrow
-    @click-left="$router.back()"
-    @click-right="onClickRight"
-  >
-    <template #right>
-      <van-icon name="ellipsis" size="20" />
-    </template>
-  </van-nav-bar>
+  <nav-bar title="商品详情"></nav-bar>
 
   <section class="detail-container">
     <div class="side-box">
@@ -81,6 +72,8 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
+
 import { getGoodData, addCart } from '../../api/detail'
 import { ref, onMounted, reactive, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -88,6 +81,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { Toast, ImagePreview } from 'vant'
 export default {
   name: 'Detail',
+
+  components: {
+    NavBar
+  },
 
   setup() {
     const route = useRoute()

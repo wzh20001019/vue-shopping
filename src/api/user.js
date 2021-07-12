@@ -15,3 +15,10 @@ export const register = params => {
     data: params
   })
 }
+
+export const getUserInfo = () => {
+  return request({
+    method: 'GET',
+    url: '/user/info'
+  })
+}

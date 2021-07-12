@@ -1,16 +1,11 @@
 <template>
-  <van-nav-bar
-    title="购物车"
-    left-arrow
-    @click-left="$router.back()"
-    @click-right="onClickRight"
-  >
-    <template #right>
-      <van-icon name="ellipsis" size="20" />
-    </template>
-  </van-nav-bar>
+  <nav-bar title="购物车"></nav-bar>
 
-  <section class="air cart-container" v-if="cartList.length === 0">
+  <section
+    class="air cart-container"
+    v-if="cartList.length === 0"
+    v-show="isAirShow"
+  >
     <img
       src="https://s.yezgea02.com/1604028375097/empty-car.png"
       alt="空购物车"
@@ -21,7 +16,7 @@
     >
   </section>
 
-  <section class="no-air cart-container" v-else>
+  <section class="no-air cart-container" v-else v-show="isNoAirShow">
     <van-checkbox-group
       @click="groupChange"
       v-model="result"
@@ -64,14 +59,20 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
+
 import { getItem } from '@/utils/storage'
-import { getCart, modifyCart, deleteCart } from '../../api/cart'
+import { getCart, modifyCart, deleteCart } from '@/api/cart'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Toast } from 'vant'
 export default {
   name: 'Cart',
+
+  components: {
+    NavBar
+  },
 
   setup() {
     const router = useRouter()
@@ -81,6 +82,8 @@ export default {
     const result = ref([])
     const newList = ref([])
     const checked = ref(true)
+    const isAirShow = ref(false)
+    const isNoAirShow = ref(false)
     const total = ref(0)
 
     const price = ref(0)
@@ -100,6 +103,13 @@ export default {
       getCart()
         .then(res => {
           cartList.value = res.data.data
+
+          if (cartList.value.length > 0) {
+            isNoAirShow.value = true
+          } else {
+            isAirShow.value = true
+          }
+
           result.value = cartList.value.map(item => item.cartItemId)
           TotalPrice()
           sumTotal()
@@ -107,10 +117,6 @@ export default {
         .catch(err => {
           console.log(err.message)
         })
-    }
-
-    const onClickRight = () => {
-      Toast('点击了')
     }
 
     const TotalPrice = () => {
@@ -183,7 +189,6 @@ export default {
     }
 
     return {
-      onClickRight,
       onSubmit,
       groupChange,
       qxChecked,
@@ -192,26 +197,17 @@ export default {
       cartList,
       result,
       checked,
-      price
+      price,
+      isAirShow,
+      isNoAirShow
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-.van-nav-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
 .van-checkbox-group {
   padding-bottom: 200px;
-}
-
-/deep/.van-nav-bar__arrow {
-  font-size: 50px;
 }
 
 .cart-container {
