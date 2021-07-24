@@ -41,6 +41,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
+  border-bottom: 0.5px solid rgb(231, 231, 231);
 }
 
 /deep/.van-nav-bar__arrow {

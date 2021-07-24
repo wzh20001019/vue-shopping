@@ -76,6 +76,11 @@ const routes = [
     component: () => import('../views/pages/about.vue')
   },
   {
+    path: '/create-order',
+    name: 'CreateOrder',
+    component: () => import('../views/pages/createOrder.vue')
+  },
+  {
     // 访问不存在的页面
     path: '/:catchAll(.*)',
     name: '404',

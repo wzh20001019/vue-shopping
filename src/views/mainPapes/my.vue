@@ -75,8 +75,6 @@ export default {
             user.info = res.data.data
             isLogin.value = true
           }
-
-          console.log(user.info)
         })
         .catch(err => {
           console.log(err)

@@ -74,9 +74,11 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 
-import { getGoodData, addCart } from '../../api/detail'
+import { getGoodData, addCart } from '@/api/detail'
+import { getCart } from '../../api/cart'
 import { ref, onMounted, reactive, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 import { Toast, ImagePreview } from 'vant'
 export default {
@@ -90,8 +92,11 @@ export default {
     const route = useRoute()
     const router = useRouter()
 
+    const store = useStore()
+
     const active = ref(0)
     const activeTab = ref(0)
+    const num = ref(0)
 
     const detailData = reactive({
       sideList: [],
@@ -156,6 +161,19 @@ export default {
 
         if (res.resultCode === 200) {
           Toast.success('添加成功')
+          getCart()
+            .then(res => {
+              if (res.data.resultCode === 200) {
+                res.data.data.forEach(item => {
+                  num.value += item.goodsCount
+
+                  store.commit('updateTotal', num.value)
+                })
+              }
+            })
+            .catch(err => {
+              console.warn(err)
+            })
         } else {
           Toast.fail(res.message)
         }

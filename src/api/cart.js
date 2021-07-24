@@ -21,3 +21,7 @@ export const deleteCart = id => {
     url: '/shop-cart/' + id
   })
 }
+
+export const getOrderCart = data => {
+  return request.get('/shop-cart/settle', { params: data })
+}

@@ -144,7 +144,15 @@ export default {
     }
 
     const onSubmit = () => {
-      console.log('结算')
+      if (result.value.length === 0) {
+        return Toast.fail('请选择商品')
+      }
+      router.push({
+        path: '/create-order',
+        query: {
+          cartItemIds: JSON.stringify(result.value)
+        }
+      })
     }
 
     const groupChange = () => {
