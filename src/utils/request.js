@@ -35,7 +35,6 @@ request.interceptors.response.use(
     }
     if (res.data.resultCode !== 200) {
       if (res.data.message) Toast.fail(res.data.message)
-      if (res.data.message === '购物项不能为空') router.push('/home')
 
       if (res.data.resultCode === 416) {
         router.push({ path: '/login' })

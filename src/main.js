@@ -34,7 +34,8 @@ import {
   SubmitBar,
   Checkbox,
   CheckboxGroup,
-  Popup
+  Popup,
+  List
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -84,5 +85,6 @@ app.use(SubmitBar)
 app.use(Checkbox)
 app.use(CheckboxGroup)
 app.use(Popup)
+app.use(List)
 
 app.mount('#app')

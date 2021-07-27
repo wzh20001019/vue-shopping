@@ -93,4 +93,10 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, form, next) => {
+  if (form.path === '/order' && to.path === '/create-order') router.push('/my')
+
+  next()
+})
+
 export default router

@@ -8,6 +8,10 @@ export const createOrder = params => {
   })
 }
 
+export const getOrderList = params => {
+  return request.get('/order', { params })
+}
+
 export const payOrder = params => {
   return request.get('/paySuccess', { params })
 }
