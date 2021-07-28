@@ -22,3 +22,18 @@ export const getUserInfo = () => {
     url: '/user/info'
   })
 }
+
+export const editUserInfo = params => {
+  return request({
+    method: 'PUT',
+    url: '/user/info',
+    data: params
+  })
+}
+
+export const logout = () => {
+  return request({
+    method: 'POST',
+    url: '/user/logout'
+  })
+}

@@ -203,6 +203,10 @@ export default {
   overflow: hidden;
 }
 
+.van-button {
+  background: #1baeae;
+}
+
 .van-form {
   margin-top: 60px;
 }
