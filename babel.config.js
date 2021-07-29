@@ -1,3 +1,10 @@
+const prodPlugins = []
+
+// 项目上线时添加的插件
+if (process.env.NODE_ENV === 'production') {
+  prodPlugins.push('transform-remove-console')
+}
+
 module.exports = {
   presets: ['@vue/cli-plugin-babel/preset'],
   plugins: [
@@ -10,5 +17,6 @@ module.exports = {
       },
       'vant'
     ]
-  ]
+  ],
+  ...prodPlugins // 导出插件
 }
