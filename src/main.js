@@ -35,7 +35,9 @@ import {
   Checkbox,
   CheckboxGroup,
   Popup,
-  List
+  List,
+  AddressList,
+  AddressEdit
 } from 'vant'
 
 import './style/index.less' // 引入自定义样式
@@ -86,5 +88,7 @@ app.use(Checkbox)
 app.use(CheckboxGroup)
 app.use(Popup)
 app.use(List)
+app.use(AddressList)
+app.use(AddressEdit)
 
 app.mount('#app')

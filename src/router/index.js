@@ -53,27 +53,27 @@ const routes = [
   {
     path: '/order',
     name: 'Order',
-    component: () => import('../views/pages/order.vue')
+    component: () => import('@/views/pages/order.vue')
   },
   {
     path: '/account',
     name: 'Account',
-    component: () => import('../views/pages/account.vue')
+    component: () => import('@/views/pages/account.vue')
   },
   {
     path: '/address',
     name: 'Address',
-    component: () => import('../views/pages/address.vue')
+    component: () => import('@/views/pages/address.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/pages/about.vue')
+    path: '/edit-address',
+    name: 'EditAddress',
+    component: () => import('@/views/pages/editAddress.vue')
   },
   {
     path: '/create-order',
     name: 'CreateOrder',
-    component: () => import('../views/pages/createOrder.vue')
+    component: () => import('@/views/pages/createOrder.vue')
   },
   {
     // 访问不存在的页面

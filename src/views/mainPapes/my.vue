@@ -25,7 +25,7 @@
         <van-cell title="我的订单" is-link @click="$router.push('/order')" />
         <van-cell title="账号管理" is-link @click="$router.push('/account')" />
         <van-cell title="地址管理" is-link @click="$router.push('/address')" />
-        <van-cell title="关于我们" is-link @click="$router.push('/about')" />
+        <van-cell title="关于我们" is-link @click="about" />
       </van-cell-group>
     </div>
   </section>
@@ -81,9 +81,14 @@ export default {
         })
     })
 
+    const about = () => {
+      Toast('关于我们')
+    }
+
     return {
       isLogin,
-      ...toRefs(user)
+      ...toRefs(user),
+      about
     }
   }
 }

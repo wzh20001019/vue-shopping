@@ -13,7 +13,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import { getUserInfo, editUserInfo, logout } from '../../api/user'
+import { getUserInfo, editUserInfo, logout } from '@/api/user'
 import { removeItem } from '@/utils/storage'
 
 import md5 from 'js-md5'

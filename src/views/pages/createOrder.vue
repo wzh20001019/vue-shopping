@@ -1,7 +1,7 @@
 <template>
   <nav-bar title="生成订单"></nav-bar>
   <section class="create-order-container">
-    <div class="address" @click="$router.push('/address')">
+    <div class="address" @click="goAddress">
       <div class="user">
         <span>{{ address.userName }} {{ address.userPhone }}</span>
         <span
@@ -97,7 +97,8 @@ export default {
     const state = reactive({
       goodsList: [],
       address: {},
-      orderNo: ''
+      orderNo: '',
+      cartItemIds: []
     })
 
     const show = ref(false)
@@ -159,11 +160,22 @@ export default {
       router.push({ path: '/order' })
     }
 
+    const goAddress = () => {
+      router.push({
+        path: '/address',
+        query: {
+          cartItemIds: route.query.cartItemIds,
+          from: 'create-order'
+        }
+      })
+    }
+
     return {
       ...toRefs(state),
       handleCreateOrder,
       handlePayOrder,
       close,
+      goAddress,
       settlement,
       show
     }
