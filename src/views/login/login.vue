@@ -244,7 +244,7 @@ a {
 
 .current {
     position: fixed;
-    bottom: 200px;
+    top: 900px;
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
