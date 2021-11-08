@@ -89,7 +89,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, form, next) => {
-  if (form.path === '/order' && to.path === '/create-order') router.push('/my')
+  if (form.path === '/order' && to.path === '/create-order') {
+    location.href = '/'
+  }
 
   next()
 })

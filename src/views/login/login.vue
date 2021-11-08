@@ -14,8 +14,8 @@
       <van-field
         v-model="username"
         name="username"
-        label="用户名"
-        placeholder="用户名"
+        label="手机号"
+        placeholder="手机号"
         :rules="rules.username"
       />
 
@@ -44,6 +44,18 @@
     </van-form>
 
     <a href="javascript:;" @click="isShow = false">立即注册</a>
+
+    <section class="current">
+        <p>☛ 测试账号 ☚</p>
+        <div class="zh">
+            <div>
+            <span>账号: </span><span>17011111111</span>
+        </div>
+        <div>
+            <span>密码: </span><span>111111</span>
+        </div>
+        </div>
+    </section>
   </section>
 
   <section class="register container" v-else>
@@ -61,8 +73,8 @@
       <van-field
         v-model="username"
         name="username"
-        label="用户名"
-        placeholder="用户名"
+        label="手机号"
+        placeholder="手机号"
         :rules="rules.username"
       />
 
@@ -91,6 +103,18 @@
     </van-form>
 
     <a href="javascript:;" @click="isShow = true">立即登录</a>
+
+    <section class="current">
+        <p>☛ 测试账号 ☚</p>
+        <div class="zh">
+            <div>
+            <span>账号: </span><span>17011111111</span>
+        </div>
+        <div>
+            <span>密码: </span><span>111111</span>
+        </div>
+        </div>
+    </section>
   </section>
 </template>
 
@@ -127,8 +151,8 @@ export default {
     const isShow = ref(true)
 
     const state = reactive({
-      username: '',
-      password: '',
+      username: '17011111111',
+      password: '111111',
       verify: ''
     })
 
@@ -216,5 +240,33 @@ a {
   margin: 40px 60px 0 0;
   color: #55e7fc;
   font-size: 30px;
+}
+
+.current {
+    position: fixed;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #333;
+
+    p {
+        margin-top: 16px;
+        text-align: center;
+        color: rgb(110, 26, 11);
+        font-size: 36px;
+    }
+
+    .zh {
+        margin-top: 60px;
+        padding-left: 150px;
+        font-size: 34px;
+
+        div {
+            margin-top: 30px;
+        }
+    }
 }
 </style>
